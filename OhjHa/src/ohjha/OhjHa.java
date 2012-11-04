@@ -34,21 +34,23 @@ public class OhjHa {
    @Option(name="-d", usage="Search for gene name from EMBL.")
    private String dna;
    
-   @Option(name="-o", usage="Outputfile name.")
+   @Option(name="-o", usage="Outputfile name. If no output is specified, result is printed.")
    private String output;
+   
+   @Option(name="-help", usage="Print commands.")
+   private boolean help;
    
    public void setAction(String action){ this.action = action; }
    public void setInput(String input) {this.input = input;}
    public void setOutput(String output) {this.output = output;}
 
    public static void main(String[] args) {
-
-       OhjHa t = new OhjHa();
-       t.run(args);
+       
+       OhjHa hieno = new OhjHa();
+       hieno.Komentorivi(args);
    }
 
-
-   public void run(String[] args) {
+   public void Komentorivi(String[] args) {
        
        CmdLineParser parser = new CmdLineParser(this);
        Toiminto toiminto = new Toiminto();
@@ -56,12 +58,6 @@ public class OhjHa {
        
        try {
            parser.parseArgument(args);
-
-           if (output == null) {
-               throw new CmdLineException(parser, "No output filename given!");}
-           
-           //* Testi //*
-           System.out.println("Testing input " + input + " on action " + action + " on output " + output);
            
            //* Luetaan target muuttujaan tiedostosta, jos -i on tiedostonimi.
            
@@ -75,11 +71,13 @@ public class OhjHa {
                case "rc": 
                    System.out.println("Performing reverse compliment."); //* Testi //*
                    String rc = toiminto.ReverseCompliment(input);
-                   tiedosto.WriteTo(output, rc);
-                   System.out.println("RC completed, file name " + output); //* Testi //*
+                   tiedosto.Printable(rc, output);
                    break;
                    
-               case "pm": System.out.println("Performing protein mass calculation."); break;
+               case "cn": System.out.println("Performing count nucleotides!");
+                    String count = toiminto.CountNucleotides(input);
+                    tiedosto.Printable(count, output);
+                    break;
            }
           
            

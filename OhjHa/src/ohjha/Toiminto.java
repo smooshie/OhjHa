@@ -9,8 +9,6 @@ package ohjha;
  * @author Smoosh
  */
 public class Toiminto {
-    public int count;
-    public String target;
     
     public String ReverseCompliment(String input) {
         
@@ -29,8 +27,22 @@ public class Toiminto {
         return buffer.reverse().toString();
     }
     
-    public int Count(String input) {
-    
-        return count;
+    public String CountNucleotides(String input) {
+        int A = 0;
+        int C = 0;
+        int T = 0;
+        int G = 0;
+        
+        char[] countables = input.toCharArray();
+        for(char c: countables) {
+            if (c == 'A') A++;
+            if (c == 'C') C++;
+            if (c == 'G') G++;
+            if (c == 'T') T++;
+        }
+        
+        int count = A + C + G + T;
+        
+        return "A: " + A + " C: " + C + " G: " + G + " T :" + T + "\n In total: " + count + " nucleotides long.";
     }
 }

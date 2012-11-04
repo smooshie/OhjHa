@@ -39,9 +39,19 @@ public class FileHandling {
         PrintWriter filer = new PrintWriter(new FileWriter(output));
         filer.print(data);
         filer.close();
+        System.out.println("Saved to " + output);
         
         } catch (IOException e) {
             System.out.println("Error in copying to file!");
+        }
+    }
+    
+    public static void Printable(String input, String output) {
+        
+        if (output == null) {
+            System.out.println(input);
+        } else {
+            WriteTo(output, input);
         }
     }
 }
