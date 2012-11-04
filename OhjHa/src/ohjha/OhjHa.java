@@ -7,15 +7,12 @@
  * and open the template in the editor.
  */
 package ohjha;
-import org.kohsuke.args4j.Argument;
+
 import org.kohsuke.args4j.CmdLineException;
 import org.kohsuke.args4j.CmdLineParser;
 import org.kohsuke.args4j.Option;
+import java.util.Scanner;
 
-import java.util.*;
-import java.io.File;
-import java.io.IOException;
-import java.io.FileNotFoundException;
 /**
  *
  * @author Smoosh
@@ -40,6 +37,7 @@ public class OhjHa {
    @Option(name="-help", usage="Print commands.")
    private boolean help;
    
+   public String tulos;
    public void setAction(String action){ this.action = action; }
    public void setInput(String input) {this.input = input;}
    public void setOutput(String output) {this.output = output;}
@@ -47,17 +45,24 @@ public class OhjHa {
    public static void main(String[] args) {
        
        OhjHa hieno = new OhjHa();
-       hieno.Komentorivi(args);
+       Scanner reader = new Scanner(System.in);
+       
+       System.out.println("Fancy Biology Program!\nUse -i to input directly or insert filename. Use -do to perform actions. Use -o to specify output file, if not specified results are printed.");
+       System.out.print("Input command: ");
+       
+       String user = reader.nextLine();
+       String[] komennot = user.split(" ");
+       hieno.Komentorivi(komennot);
    }
 
-   public void Komentorivi(String[] args) {
+   public void Komentorivi(String[] komennot) {
        
        CmdLineParser parser = new CmdLineParser(this);
        Toiminto toiminto = new Toiminto();
        FileHandling tiedosto = new FileHandling();
        
        try {
-           parser.parseArgument(args);
+           parser.parseArgument(komennot);
            
            //* Luetaan target muuttujaan tiedostosta, jos -i on tiedostonimi.
            
@@ -68,18 +73,20 @@ public class OhjHa {
            //* Suoritetaan pyydetty toiminto -do. //*
 
            switch (action) {
-               case "rc": 
-                   System.out.println("Performing reverse compliment."); //* Testi //*
-                   String rc = toiminto.ReverseCompliment(input);
-                   tiedosto.Printable(rc, output);
+               case "rc": System.out.println("Performing reverse compliment."); //* Testi //*
+                   tulos = toiminto.ReverseCompliment(input);
                    break;
                    
-               case "cn": System.out.println("Performing count nucleotides!");
-                    String count = toiminto.CountNucleotides(input);
-                    tiedosto.Printable(count, output);
-                    break;
+               case "cn": System.out.println("Performing count nucleotides.");
+                   tulos = toiminto.CountNucleotides(input);
+                   break;
+               
+               case "cod": System.out.println("Making codons!");
+                   tulos = toiminto.Codons(input);
+                   break;
            }
-          
+           
+           tiedosto.Printable(tulos, output);
            
        } catch (CmdLineException e) {
          
