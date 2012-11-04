@@ -1,1 +1,4 @@
 29.10. Dokumentaatio 1, github alustaminen ~1h
+
+3.11. Ohjelman rakenteen suunnittelu, sopivan commandlinen etsiminen ~2h
+4.11. Perusrakenteen koodi. ~2h
