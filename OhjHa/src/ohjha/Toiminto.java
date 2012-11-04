@@ -48,7 +48,7 @@ public class Toiminto {
         return "A: " + A + " C: " + C + " G: " + G + " T :" + T + "\n In total: " + count + " nucleotides long.";
     }
     
-    public String Codons(String input) {
+    public String MakeCodons(String input) {
             String protein = "";
             for(int i=0; i<input.length(); i+=3) { {
                if (i+3 < input.length()) {

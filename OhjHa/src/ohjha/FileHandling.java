@@ -16,26 +16,25 @@ import java.util.Scanner;
  * @author Smoosh
  */
 public class FileHandling {
-    String target;
+    String returnable = "";
     
-    public String ReadFrom(String file) {
+    public String ReadFrom(String filename) {
         try {
-             Scanner scanner = new Scanner(new File(file)); 
+             Scanner scanner = new Scanner(new File(filename)); 
                while (scanner.hasNextLine() ) {
-                    target += scanner.nextLine();
+                    returnable += scanner.nextLine();
                 }
               scanner.close();
          }
          catch (FileNotFoundException e) {
               System.out.println("Filename does not exist");
          }
-     return target;
+     return returnable;
     }
     
     public static void WriteTo(String output, String data) {
         try {
             
-        File out = new File(output);
         PrintWriter filer = new PrintWriter(new FileWriter(output));
         filer.print(data);
         filer.close();

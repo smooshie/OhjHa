@@ -82,7 +82,7 @@ public class OhjHa {
                    break;
                
                case "cod": System.out.println("Making codons!");
-                   tulos = toiminto.Codons(input);
+                   tulos = toiminto.MakeCodons(input);
                    break;
            }
            
