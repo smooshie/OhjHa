@@ -16,7 +16,8 @@ import java.util.Scanner;
  * @author Smoosh
  */
 public class FileHandling {
-    String returnable = "";
+    private String returnable = "";
+    private String cleaned = "";
     
     public String ReadFrom(String filename) {
         try {
@@ -53,4 +54,23 @@ public class FileHandling {
             WriteTo(output, input);
         }
     }
+    
+    public String Clean(String input) {
+        try {
+             Scanner cleaner = new Scanner(new File(input)); 
+             while (cleaner.hasNextLine() ) {
+                   String line = cleaner.nextLine();
+                   if (line.startsWith(">")) {
+                       System.out.println("Removed line starting with >");
+                   } else {
+                       cleaned += line; }
+                }
+              cleaner.close();
+         }
+         catch (FileNotFoundException e) {
+              System.out.println("Filename does not exist");
+         }
+        return cleaned;
+    }
 }
+

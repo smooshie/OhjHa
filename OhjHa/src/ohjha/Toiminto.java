@@ -10,7 +10,6 @@ import java.util.Hashtable;
  * @author Smoosh
  */
 public class Toiminto {
-    String protein;
     
     public String ReverseCompliment(String input) {
         
@@ -45,19 +44,19 @@ public class Toiminto {
         
         int count = A + C + G + T;
         
-        return "A: " + A + " C: " + C + " G: " + G + " T :" + T + "\n In total: " + count + " nucleotides long.";
+        return "A's : " + A + " C's : " + C + " G's : " + G + " T's :" + T + "\n In total: " + count + " nucleotides long.";
     }
     
     public String MakeCodons(String input) {
-            String protein = "";
+            String codons = "";
             for(int i=0; i<input.length(); i+=3) { {
                if (i+3 < input.length()) {
-                    protein += input.substring(i, i+3) + " ";}
+                    codons += input.substring(i, i+3) + " ";}
                else {
-                    protein += input.substring(i, i+(input.length()-i)) + " ";
+                    codons += input.substring(i, i+(input.length()-i)) + " ";
                }
                }
             }
-        return protein;
+        return codons;
     }
 }

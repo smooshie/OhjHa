@@ -37,7 +37,8 @@ public class OhjHa {
    @Option(name="-help", usage="Print commands.")
    private boolean help;
    
-   public String tulos;
+   private String tulos;
+   private String filename;
    public void setAction(String action){ this.action = action; }
    public void setInput(String input) {this.input = input;}
    public void setOutput(String output) {this.output = output;}
@@ -48,7 +49,7 @@ public class OhjHa {
        Scanner reader = new Scanner(System.in);
        
        System.out.println("Fancy Biology Program!\nUse -i to input directly or insert filename. Use -do to perform actions. Use -o to specify output file, if not specified results are printed.");
-       System.out.print("Input command: ");
+       System.out.print("Input commands: ");
        
        String user = reader.nextLine();
        String[] komennot = user.split(" ");
@@ -67,6 +68,7 @@ public class OhjHa {
            //* Luetaan target muuttujaan tiedostosta, jos -i on tiedostonimi.
            
            if (input.contains(".fasta") == true || input.contains(".txt") == true) {
+               filename = input;
                input = tiedosto.ReadFrom(input);
            }
 
@@ -81,8 +83,11 @@ public class OhjHa {
                    tulos = toiminto.CountNucleotides(input);
                    break;
                
-               case "cod": System.out.println("Making codons!");
+               case "cod": System.out.println("Making codons.");
                    tulos = toiminto.MakeCodons(input);
+                   break;
+               case "clean": System.out.println("Cleaning file.");
+                   tulos = tiedosto.Clean(filename);
                    break;
            }
            

@@ -57,16 +57,10 @@ public class OhjHaTest {
     @Test
     public void PrintableSaves() {
         String output = "Test.txt";
-        String input = "In file.";
+        String input = "In file.\n>A bad line\nAnother line.";
         tiedosto.Printable(input, output);        
     }
     
-    @Test
-    public void ReadFromFile() {
-        String test;
-        String filename = "Test.txt";
-        test = tiedosto.ReadFrom(filename);
-        System.out.println(test);
-    }
+    
     
 }

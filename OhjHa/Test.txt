@@ -1,1 +1,3 @@
 In file.
+>A bad line
+Another line.
