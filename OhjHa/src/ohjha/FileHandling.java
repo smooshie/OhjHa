@@ -16,26 +16,27 @@ import java.util.Scanner;
  * @author Smoosh
  */
 public class FileHandling {
-    private String returnable = "";
-    private String cleaned = "";
     
     public String ReadFrom(String filename) {
+        String read = "";
+        
         try {
              Scanner scanner = new Scanner(new File(filename)); 
                while (scanner.hasNextLine() ) {
-                    returnable += scanner.nextLine();
+                    read += scanner.nextLine();
                 }
               scanner.close();
          }
          catch (FileNotFoundException e) {
               System.out.println("Filename does not exist");
          }
-     return returnable;
+        
+     return read;
     }
     
-    public static void WriteTo(String output, String data) {
+    public void WriteTo(String output, String data) {
+        
         try {
-            
         PrintWriter filer = new PrintWriter(new FileWriter(output));
         filer.print(data);
         filer.close();
@@ -46,7 +47,7 @@ public class FileHandling {
         }
     }
     
-    public static void Printable(String input, String output) {
+    public void Printable(String input, String output) {
         
         if (output == null) {
             System.out.println(input);
@@ -56,6 +57,7 @@ public class FileHandling {
     }
     
     public String Clean(String input) {
+        String cleaned = "";
         try {
              Scanner cleaner = new Scanner(new File(input)); 
              while (cleaner.hasNextLine() ) {
@@ -64,13 +66,13 @@ public class FileHandling {
                        System.out.println("Removed line starting with >");
                    } else {
                        cleaned += line; }
-                }
-              cleaner.close();
+             }
+             cleaner.close();
          }
          catch (FileNotFoundException e) {
               System.out.println("Filename does not exist");
          }
-        return cleaned;
+         return cleaned;
     }
 }
 

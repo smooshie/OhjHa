@@ -28,7 +28,7 @@ public class OhjHa {
    @Option(name="-p", usage="Search for protein name from Swissprot.")
    private String prot;
    
-   @Option(name="-d", usage="Search for gene name from EMBL.")
+   @Option(name="-d", usage="Search for gene name from Ensembl-Human database.")
    private String dna;
    
    @Option(name="-o", usage="Outputfile name. If no output is specified, result is printed.")
@@ -51,8 +51,8 @@ public class OhjHa {
        System.out.println("Fancy Biology Program!\nUse -i to input directly or insert filename. Use -do to perform actions. Use -o to specify output file, if not specified results are printed.");
        System.out.print("Input commands: ");
        
-       String user = reader.nextLine();
-       String[] komennot = user.split(" ");
+       String userInput = reader.nextLine();
+       String[] komennot = userInput.split(" ");
        hieno.Komentorivi(komennot);
    }
 

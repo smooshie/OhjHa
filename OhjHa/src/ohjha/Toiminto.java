@@ -34,17 +34,19 @@ public class Toiminto {
         int T = 0;
         int G = 0;
         
+        input = input.toUpperCase();
         char[] countables = input.toCharArray();
         for(char c: countables) {
-            if (c == 'A') A++;
-            if (c == 'C') C++;
-            if (c == 'G') G++;
-            if (c == 'T') T++;
+            if (c == 'A') {A++;}
+            if (c == 'C') {C++;}
+            if (c == 'G') {G++;}
+            if (c == 'T') {T++;}
         }
         
         int count = A + C + G + T;
+        double gc = (100*(C + G)/count);
         
-        return "A's : " + A + " C's : " + C + " G's : " + G + " T's :" + T + "\n In total: " + count + " nucleotides long.";
+        return "A's : " + A + " C's : " + C + " G's : " + G + " T's :" + T + "\nIn total: " + count + " nucleotides long.\nGC% is " + gc +"%.";
     }
     
     public String MakeCodons(String input) {
