@@ -5,20 +5,17 @@
 package ohjha;
 import java.util.Hashtable;
 
-/**
+/**Kaikki -do:n liittyvät action metodit.
  *
  * @author Smoosh
  */
-/** Kaikki -do:n liittyvät action metodit.
-     * 
-     */
 
 public class Toiminto {
     
-        /** Tekee käänteiskomplimentin DNA-sekvenssille. )A to T, etc. ja reverse.)
-         *  @param input Stringi joka sisältää DNA-sekvenssin.
-         *  @return käänteiskomplimentti.
-         */     
+/** Tekee käänteiskomplimentin DNA-sekvenssille. )A to T, etc. ja reverse.)
+*  @param input Stringi joka sisältää DNA-sekvenssin.
+*  @return käänteiskomplimentti.
+*/     
     public String ReverseCompliment(String input) {
 
         StringBuffer buffer = new StringBuffer();
@@ -63,10 +60,11 @@ public class Toiminto {
         
         return "A's : " + A + " C's : " + C + " G's : " + G + " T's :" + T + "\nIn total: " + count + " nucleotides long.\nGC% is " + gc +"%.";
     }
-             /** Tekee DNA-stringille kodonirakenteen (välilyönti joka kolmannen nukleotidin jälkeen).
-             *  @param input DNA-stringi
-             *  @param codons DNA-stringi codoneilla.
-             */
+
+/** Tekee DNA-stringille kodonirakenteen (välilyönti joka kolmannen nukleotidin jälkeen).
+*  @param input DNA-stringi
+*  @param codons DNA-stringi codoneilla.
+*/
     public String MakeCodons(String input) {
 
             String codons = "";

@@ -12,21 +12,18 @@ import java.io.PrintWriter;
 import java.util.Scanner;
 
 /**
- *
+ * Kaikki tiedostojen käsittelyyn liittyvät metodit.
  * @author Smoosh
  */
 public class FileHandling {
-    /** Kaikki tiedostojen käsittelyyn liittyvät metodit.
-     * 
-     */
     
+/** Lukee tiedostosta.
+* @param filename Käyttäjän antama tiedostonimi.
+* @return Tiedoston sisältö stringinä.
+*/
     public String ReadFrom(String filename) {
-        /** Lukee tiedostosta.
-         * @param filename Käyttäjän antama tiedostonimi.
-         * @return Tiedoston sisältö stringinä.
-         */
+
         String read = "";
-        
         try {
              Scanner scanner = new Scanner(new File(filename)); 
                while (scanner.hasNextLine() ) {
@@ -41,12 +38,12 @@ public class FileHandling {
      return read;
     }
     
+/** Kirjoittaa käyttäjän määrittämään tiedostoon.
+* @param output Käyttäjän määrittämä tiedostonimi.
+* @param data Muokattu tieto.
+*/    
     public void WriteTo(String output, String data) {
-        /** Kirjoittaa käyttäjän määrittämään tiedostoon.
-         * @param output Käyttäjän määrittämä tiedostonimi.
-         * @param data Muokattu tieto.
-         */
-        
+
         try {
         PrintWriter filer = new PrintWriter(new FileWriter(output));
         filer.print(data);
@@ -58,11 +55,12 @@ public class FileHandling {
         }
     }
     
+/** Määrittää pitääkö tulostaa vai tallentaa tiedostoon.
+* @param input Muokattu tieto.
+* @param output Jos tyhjä, printtaa. Jos sisältää nimen, ohjaa WriteTo() kirjoitettavaksi.
+*/    
     public void Printable(String input, String output) {
-        /** Määrittää pitääkö tulostaa vai tallentaa tiedostoon.
-         * @param input Muokattu tieto.
-         * @param output Jos tyhjä, printtaa. Jos sisältää nimen, ohjaa WriteTo() kirjoitettavaksi.
-         */
+
         if (output == null) {
             System.out.println(input);
         } else {
@@ -70,10 +68,12 @@ public class FileHandling {
         }
     }
     
+/** Puhdistaa esim fasta-tiedostosta rivit, jotka eivät ole biologista seknvenssiä.
+* @param input tiedostonimi.
+* @param cleaned puhdistettu tiedosto stringinä.
+*/    
     public String Clean(String input) {
-        /** Puhdistaa esim. .fasta tiedostosta rivit, jotka eivät ole biologista seknvenssiä.
-         * @param input tiedostonimi.
-         */
+
         String cleaned = "";
         try {
              Scanner cleaner = new Scanner(new File(input)); 
