@@ -9,10 +9,18 @@ import java.util.Hashtable;
  *
  * @author Smoosh
  */
+/** Kaikki -do:n liittyvät action metodit.
+     * 
+     */
+
 public class Toiminto {
     
+        /** Tekee käänteiskomplimentin DNA-sekvenssille. )A to T, etc. ja reverse.)
+         *  @param input Stringi joka sisältää DNA-sekvenssin.
+         *  @return käänteiskomplimentti.
+         */     
     public String ReverseCompliment(String input) {
-        
+
         StringBuffer buffer = new StringBuffer();
         input = input.toUpperCase();
 
@@ -28,7 +36,14 @@ public class Toiminto {
         return buffer.reverse().toString();
     }
     
+/** Laskee Stringissä olevat nukleotidit ja niihin liittyviä asioita.
+*  @param input DNA-sekvenssi stringi.
+*  @return Stringinä kaikki lasketut tiedot.
+*/    
     public String CountNucleotides(String input) {
+        
+        
+        
         int A = 0;
         int C = 0;
         int T = 0;
@@ -48,8 +63,12 @@ public class Toiminto {
         
         return "A's : " + A + " C's : " + C + " G's : " + G + " T's :" + T + "\nIn total: " + count + " nucleotides long.\nGC% is " + gc +"%.";
     }
-    
+             /** Tekee DNA-stringille kodonirakenteen (välilyönti joka kolmannen nukleotidin jälkeen).
+             *  @param input DNA-stringi
+             *  @param codons DNA-stringi codoneilla.
+             */
     public String MakeCodons(String input) {
+
             String codons = "";
             for(int i=0; i<input.length(); i+=3) { {
                if (i+3 < input.length()) {

@@ -18,7 +18,11 @@ import java.util.Scanner;
  * @author Smoosh
  */
 public class OhjHa {
-    
+   
+    /** args4j:n komentojen alustaminen.
+     * @action muuttuja syntyy, kun komentorivistä luetaan -do. etc...
+     */
+   
    @Option(name="-do", usage="Perform action.")
    private String action;
    
@@ -45,6 +49,10 @@ public class OhjHa {
 
    public static void main(String[] args) {
        
+       /** Scanner lukee käyttäjän inputin. Antaa käyttäjän syöttämän komentorivin Komentoriville().
+        * 
+        */
+       
        OhjHa hieno = new OhjHa();
        Scanner reader = new Scanner(System.in);
        
@@ -58,6 +66,10 @@ public class OhjHa {
 
    public void Komentorivi(String[] komennot) {
        
+       /** Alustetaan muut oliot ja komentoriviparseri.
+        *  Parsetaan kaikki tarvittavat muuttujat.
+        */
+       
        CmdLineParser parser = new CmdLineParser(this);
        Toiminto toiminto = new Toiminto();
        FileHandling tiedosto = new FileHandling();
@@ -65,14 +77,19 @@ public class OhjHa {
        try {
            parser.parseArgument(komennot);
            
-           //* Luetaan target muuttujaan tiedostosta, jos -i on tiedostonimi.
+           /**Luetaan target muuttujaan tiedostosta, jos -i on tiedostonimi.
+            * 
+            */
+             
            
            if (input.contains(".fasta") == true || input.contains(".txt") == true) {
                filename = input;
                input = tiedosto.ReadFrom(input);
            }
 
-           //* Suoritetaan pyydetty toiminto -do. //*
+           /** Switch-caset ohjaavat haluttuun -do actioniin!
+            * 
+            */
 
            switch (action) {
                case "rc": System.out.println("Performing reverse compliment."); //* Testi //*

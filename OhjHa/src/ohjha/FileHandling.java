@@ -16,8 +16,15 @@ import java.util.Scanner;
  * @author Smoosh
  */
 public class FileHandling {
+    /** Kaikki tiedostojen käsittelyyn liittyvät metodit.
+     * 
+     */
     
     public String ReadFrom(String filename) {
+        /** Lukee tiedostosta.
+         * @param filename Käyttäjän antama tiedostonimi.
+         * @return Tiedoston sisältö stringinä.
+         */
         String read = "";
         
         try {
@@ -35,6 +42,10 @@ public class FileHandling {
     }
     
     public void WriteTo(String output, String data) {
+        /** Kirjoittaa käyttäjän määrittämään tiedostoon.
+         * @param output Käyttäjän määrittämä tiedostonimi.
+         * @param data Muokattu tieto.
+         */
         
         try {
         PrintWriter filer = new PrintWriter(new FileWriter(output));
@@ -48,7 +59,10 @@ public class FileHandling {
     }
     
     public void Printable(String input, String output) {
-        
+        /** Määrittää pitääkö tulostaa vai tallentaa tiedostoon.
+         * @param input Muokattu tieto.
+         * @param output Jos tyhjä, printtaa. Jos sisältää nimen, ohjaa WriteTo() kirjoitettavaksi.
+         */
         if (output == null) {
             System.out.println(input);
         } else {
@@ -57,6 +71,9 @@ public class FileHandling {
     }
     
     public String Clean(String input) {
+        /** Puhdistaa esim. .fasta tiedostosta rivit, jotka eivät ole biologista seknvenssiä.
+         * @param input tiedostonimi.
+         */
         String cleaned = "";
         try {
              Scanner cleaner = new Scanner(new File(input)); 
