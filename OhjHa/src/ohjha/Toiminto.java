@@ -39,8 +39,6 @@ public class Toiminto {
 */    
     public String CountNucleotides(String input) {
         
-        
-        
         int A = 0;
         int C = 0;
         int T = 0;

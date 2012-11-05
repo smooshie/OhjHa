@@ -20,7 +20,7 @@ import static org.junit.Assert.*;
 public class OhjHaTest {
     OhjHa ohjha;
     Toiminto toiminto;
-    FileHandling tiedosto;
+    FileHandling filehandling;
     
     public OhjHaTest() {   
     }
@@ -37,7 +37,7 @@ public class OhjHaTest {
     public void setUp() {
         OhjHa ohjha = new OhjHa();
         Toiminto toiminto = new Toiminto();
-        FileHandling tiedosto = new FileHandling();
+        FileHandling filehandling = new FileHandling();
     }
     
     @After
@@ -45,22 +45,48 @@ public class OhjHaTest {
     }
 
     @Test
-    public void hello() {}
+    public void hello() {
+    System.out.println("Hello!");}
     
     @Test
     public void PrintablePrints() {
         String output = null;
         String input = "Print!";
-        tiedosto.Printable(input, output);
+        filehandling.Printable(input, output);
     }
     
     @Test
     public void PrintableSaves() {
         String output = "Test.txt";
-        String input = "In file.\n>A bad line\nAnother line.";
-        tiedosto.Printable(input, output);        
+        String input = "In file.";
+        filehandling.Printable(input, output);        
     }
     
+    @Test
+    public void ReverseComp() {
+        String input = "ACAC";
+        String gtgt = toiminto.ReverseCompliment(input);
+        assertEquals("GTGT", gtgt);
+    }
     
+    @Test
+    public void CodonsTriplets() {
+        String input = "aaacccttt";
+        String codons = toiminto.MakeCodons(input);
+        assertEquals("aaa ccc ttt", codons);
+    }
     
+    @Test
+    public void UnevenCodons() {
+        String input = "aaaccct";
+        String codons = toiminto.MakeCodons(input);
+        assertEquals("aaa ccc t", codons); 
+    }
+    
+    @Test
+    public void CountNucl() {    
+        String input = "atcg";
+        String output = toiminto.CountNucleotides(input);
+        assertEquals("A's : " + 1 + " C's : " + 1 + " G's : " + 1 + " T's :" + 1 + "\nIn total: " + 4 + " nucleotides long.\nGC% is " + 50.0 +"%.",input);
+    }
 }
