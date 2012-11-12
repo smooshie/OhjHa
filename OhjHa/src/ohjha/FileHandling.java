@@ -91,5 +91,9 @@ public class FileHandling {
          }
          return cleaned;
     }
+    
+    public static void main(String[] args) {
+        
+    }
 }
 

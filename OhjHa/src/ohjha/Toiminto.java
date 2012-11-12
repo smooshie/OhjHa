@@ -4,6 +4,9 @@
  */
 package ohjha;
 import java.util.Hashtable;
+import java.lang.StringIndexOutOfBoundsException;
+import java.util.HashMap;
+import java.util.Map.Entry;
 
 /**Kaikki -do:n liittyvät action metodit.
  *
@@ -11,6 +14,38 @@ import java.util.Hashtable;
  */
 
 public class Toiminto {
+    Tables taulut = new Tables();
+    FileHandling tiedosto = new FileHandling();
+    public String tulos;
+    
+/** Switch-caset ohjaavat haluttuun -do actioniin!
+ * 
+ */
+    public void Switch(String action, String input, String filename, String output) {
+        
+          switch (action) {
+               case "rc": System.out.println("Performing reverse compliment.");
+                   tulos = ReverseCompliment(input);
+                   break;
+                   
+               case "cn": System.out.println("Performing count nucleotides.");
+                   tulos = CountNucleotides(input);
+                   break;
+               
+               case "cod": System.out.println("Making codons.");
+                   tulos = MakeCodons(input);
+                   break;
+               case "clean": System.out.println("Cleaning file.");
+                   tulos = tiedosto.Clean(filename);
+                   break;
+               case "pc": System.out.println("Protein conversion.");
+                   tulos = ProteinConversion(input);
+               case "res": System.out.println("Find Restriction site.");
+                   tulos = FindRESite(input);
+           }
+           
+           tiedosto.Printable(tulos, output);
+    }
     
 /** Tekee käänteiskomplimentin DNA-sekvenssille. )A to T, etc. ja reverse.)
 *  @param input Stringi joka sisältää DNA-sekvenssin.
@@ -31,6 +66,33 @@ public class Toiminto {
         }
         
         return buffer.reverse().toString();
+    }
+
+/** Lukee codoneista proteiinit eri riveille jos Stop-kodoneita löytyy.
+*  @param input Stringi joka sisältää DNA-sekvenssin.
+*  @param output Stringin jossa proteiinisekvenssi
+*  @return output
+*/     
+    public String ProteinConversion(String input) {
+        
+        Hashtable aminos = taulut.DNA();
+        input = input.toUpperCase();
+        String output = "";
+        
+        for(int i=0; i<input.length(); i+=3) {
+            try {
+                if (aminos.get(input.substring(i, i+3)) == "Stop") {
+                    System.out.println("Stop codon found.");
+                    output += aminos.get(input.substring(i, i+3));
+                    output += "\n";
+                } else {
+                    output += aminos.get(input.substring(i, i+3));
+                }
+            } catch (StringIndexOutOfBoundsException e) {
+                System.out.println("Cannot form a full codon from last nucleotides. Nucleotides ignored.");
+            }
+        }
+        return output;
     }
     
 /** Laskee Stringissä olevat nukleotidit ja niihin liittyviä asioita.
@@ -75,5 +137,49 @@ public class Toiminto {
                }
             }
         return codons;
+    }
+    
+ /** Tekee DNA-stringistä RNA-stringin.
+*  @param input DNA-stringi
+*  @param output RNA-stringi
+*/   
+    public String MakeRNA(String input) {
+        String rna = "";
+        input = input.toUpperCase();
+        char[] searchables = input.toCharArray();
+        
+        for(char c: searchables) {
+            if (c == 'T') {rna += "U";}
+            else {rna += c;}
+        }
+        
+        return rna;
+    }
+
+/** Löytää restriktionendonukleaasi leikkauskohtia stringistä.
+*  @param input DNA-stringi
+*  @param output indeksit
+*/   
+    public String FindRESite(String input) {
+
+        HashMap<String, String> res = taulut.RES();
+        input = input.toUpperCase();
+        String output = "Found : \n";
+        
+        for(int i=0; i<input.length(); i++) {
+            for (Entry<String, String> entry: res.entrySet()) {
+                try {
+                    if (input.substring(i, i+entry.getKey().length()).equals(entry.getKey())) {
+                            output += entry.getValue() + " at site(s) : " + i; }
+                } catch (StringIndexOutOfBoundsException e) {
+                }
+            }
+        }
+        
+        return output;
+    }
+    
+    public static void main(String[] args) {
+        
     }
 }

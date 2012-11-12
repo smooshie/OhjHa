@@ -110,24 +110,7 @@ public class OhjHa {
            /** Switch-caset ohjaavat haluttuun -do actioniin!
             * 
             */
-           switch (action) {
-               case "rc": System.out.println("Performing reverse compliment."); //* Testi //*
-                   tulos = toiminto.ReverseCompliment(input);
-                   break;
-                   
-               case "cn": System.out.println("Performing count nucleotides.");
-                   tulos = toiminto.CountNucleotides(input);
-                   break;
-               
-               case "cod": System.out.println("Making codons.");
-                   tulos = toiminto.MakeCodons(input);
-                   break;
-               case "clean": System.out.println("Cleaning file.");
-                   tulos = tiedosto.Clean(filename);
-                   break;
-           }
-           
-           tiedosto.Printable(tulos, output);
+           toiminto.Switch(action, input, filename, output);
            
        } catch (CmdLineException e) {
          
