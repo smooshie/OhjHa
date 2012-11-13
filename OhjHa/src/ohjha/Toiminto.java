@@ -156,7 +156,7 @@ public class Toiminto {
         return rna;
     }
 
-/** Löytää restriktionendonukleaasi leikkauskohtia stringistä.
+/** Löytää restriktionendonukleaasi leikkauskohtia stringistä, vertaamalla taulukkoon jossa on sekä RE-sekvenssi, että sen nimi.
 *  @param input DNA-stringi
 *  @param output indeksit
 */   
@@ -170,12 +170,13 @@ public class Toiminto {
             for (Entry<String, String> entry: res.entrySet()) {
                 try {
                     if (input.substring(i, i+entry.getKey().length()).equals(entry.getKey())) {
-                            output += entry.getValue() + " at site(s) : " + i; }
+                            output += entry.getValue() + " at index(s) : " + i + "\n"; }
                 } catch (StringIndexOutOfBoundsException e) {
                 }
             }
         }
         
+        if (output.length() == 9) {output += "No RES sites.";}
         return output;
     }
     

@@ -21,6 +21,7 @@ public class OhjHaTest {
     OhjHa ohjha;
     Toiminto toiminto;
     FileHandling filehandling;
+    public String output;
     
     public OhjHaTest() {   
     }
@@ -49,15 +50,20 @@ public class OhjHaTest {
     System.out.println("Hello!");}
     
     @Test
+    public void newPrintables() {
+        
+    }
+    
+    @Test
     public void PrintablePrints() {
-        String output = null;
+        output = null;
         String input = "Print!";
         filehandling.Printable(input, output);
     }
     
     @Test
     public void PrintableSaves() {
-        String output = "Test.txt";
+        output = "Test.txt";
         String input = "In file.";
         filehandling.Printable(input, output);        
     }
@@ -65,28 +71,49 @@ public class OhjHaTest {
     @Test
     public void ReverseComp() {
         String input = "ACAC";
-        String gtgt = toiminto.ReverseCompliment(input);
-        assertEquals("GTGT", gtgt);
+        output = toiminto.ReverseCompliment(input);
+        assertEquals("GTGT", output);
     }
     
     @Test
     public void CodonsTriplets() {
         String input = "aaacccttt";
-        String codons = toiminto.MakeCodons(input);
-        assertEquals("aaa ccc ttt", codons);
+        output = toiminto.MakeCodons(input);
+        assertEquals("aaa ccc ttt", output);
     }
     
     @Test
     public void UnevenCodons() {
         String input = "aaaccct";
-        String codons = toiminto.MakeCodons(input);
-        assertEquals("aaa ccc t", codons); 
+        output = toiminto.MakeCodons(input);
+        assertEquals("aaa ccc t", output); 
     }
     
     @Test
     public void CountNucl() {    
         String input = "atcg";
-        String output = toiminto.CountNucleotides(input);
-        assertEquals("A's : " + 1 + " C's : " + 1 + " G's : " + 1 + " T's :" + 1 + "\nIn total: " + 4 + " nucleotides long.\nGC% is " + 50.0 +"%.",input);
+        output = toiminto.CountNucleotides(input);
+        assertEquals("A's : " + 1 + " C's : " + 1 + " G's : " + 1 + " T's :" + 1 + "\nIn total: " + 4 + " nucleotides long.\nGC% is " + 50.0 +"%.",output);
     }
+    
+     @Test
+     public void ProteinConversion() {
+         String input = "aaaaaaaaa";
+         output = toiminto.ProteinConversion(input);
+         assertEquals("KKK", output);
+     }
+     
+     @Test
+     public void MakeRNA() {
+         String input = "GTTA";
+         output = toiminto.MakeRNA(input);
+         assertEquals("GUUA", output);
+     }
+     
+      @Test
+      public void FindRESite() {
+          
+      }
+     
+     
 }
