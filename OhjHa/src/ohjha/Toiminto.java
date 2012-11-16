@@ -40,8 +40,10 @@ public class Toiminto {
                    break;
                case "pc": System.out.println("Protein conversion.");
                    tulos = ProteinConversion(input);
+                   break;
                case "res": System.out.println("Find Restriction site.");
                    tulos = FindRESite(input);
+                   break;
            }
            
            tiedosto.Printable(tulos, output);

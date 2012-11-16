@@ -36,9 +36,9 @@ public class OhjHaTest {
     
     @Before
     public void setUp() {
-        OhjHa ohjha = new OhjHa();
-        Toiminto toiminto = new Toiminto();
-        FileHandling filehandling = new FileHandling();
+        ohjha = new OhjHa();
+        toiminto = new Toiminto();
+        filehandling = new FileHandling();
     }
     
     @After
@@ -79,14 +79,14 @@ public class OhjHaTest {
     public void CodonsTriplets() {
         String input = "aaacccttt";
         output = toiminto.MakeCodons(input);
-        assertEquals("aaa ccc ttt", output);
+        assertEquals("aaa ccc ttt ", output);
     }
     
     @Test
     public void UnevenCodons() {
         String input = "aaaccct";
         output = toiminto.MakeCodons(input);
-        assertEquals("aaa ccc t", output); 
+        assertEquals("aaa ccc t ", output); 
     }
     
     @Test
@@ -101,6 +101,13 @@ public class OhjHaTest {
          String input = "aaaaaaaaa";
          output = toiminto.ProteinConversion(input);
          assertEquals("KKK", output);
+     }
+     
+     @Test
+     public void TwoProteins() {
+         String input = "aaaaaaaaatgaaaaaaaaaa";
+         output = toiminto.ProteinConversion(input);
+         assertEquals("KKKStop\nKKK", output);
      }
      
      @Test
