@@ -7,3 +7,4 @@
 11.11 Koodailua ~1h.
 12.11. Koodailua / kommentointia /testejä ~2h.
 13.11. Korjailua, UML, testejä. ~1h.
+17.11. GUI:n koodaus, muutama uus metodi. ~4h.

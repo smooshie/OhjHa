@@ -3,6 +3,7 @@
  * and open the template in the editor.
  */
 package ohjha;
+import java.io.FileNotFoundException;
 import java.util.Hashtable;
 import java.lang.StringIndexOutOfBoundsException;
 import java.util.HashMap;
@@ -16,38 +17,7 @@ import java.util.Map.Entry;
 public class Toiminto {
     Tables taulut = new Tables();
     FileHandling tiedosto = new FileHandling();
-    public String tulos;
     
-/** Switch-caset ohjaavat haluttuun -do actioniin!
- * 
- */
-    public void Switch(String action, String input, String filename, String output) {
-        
-          switch (action) {
-               case "rc": System.out.println("Performing reverse compliment.");
-                   tulos = ReverseCompliment(input);
-                   break;
-                   
-               case "cn": System.out.println("Performing count nucleotides.");
-                   tulos = CountNucleotides(input);
-                   break;
-               
-               case "cod": System.out.println("Making codons.");
-                   tulos = MakeCodons(input);
-                   break;
-               case "clean": System.out.println("Cleaning file.");
-                   tulos = tiedosto.Clean(filename);
-                   break;
-               case "pc": System.out.println("Protein conversion.");
-                   tulos = ProteinConversion(input);
-                   break;
-               case "res": System.out.println("Find Restriction site.");
-                   tulos = FindRESite(input);
-                   break;
-           }
-           
-           tiedosto.Printable(tulos, output);
-    }
     
 /** Tekee käänteiskomplimentin DNA-sekvenssille. )A to T, etc. ja reverse.)
 *  @param input Stringi joka sisältää DNA-sekvenssin.
@@ -179,6 +149,39 @@ public class Toiminto {
         }
         
         if (output.length() == 9) {output += "No RES sites.";}
+        return output;
+    }
+    
+    /** Laskee kaikki aminohapot.
+     * 
+     * @param input inputFieldistä
+     * @return output Stringi jossa kaikki aminohappojen määrät ja niiden koko nimet.
+     * @throws FileNotFoundException 
+     */
+    public String CountProteins(String input) throws FileNotFoundException {
+        HashMap<String, String> aminoNames = taulut.AminoNames();
+        HashMap<String, Integer> aminoCount = taulut.AminoCount();
+        String output = "";
+        int total = 0;
+        
+        char[] countables = input.toCharArray();
+        for(char c: countables) {
+           System.out.println(c);
+           if (aminoCount.containsKey(String.valueOf(c))) {
+               int temp = aminoCount.get(String.valueOf(c)) + 1;
+               aminoCount.put(String.valueOf(c), temp);
+           }
+        }
+        
+        for (Entry<String, Integer> entry: aminoCount.entrySet()) {
+            if (aminoNames.containsKey(entry.getKey())) {
+                output += aminoNames.get(entry.getKey()) + " (" + entry.getKey() + ") :" + entry.getValue() + "\n";
+                total += entry.getValue();
+            }
+        }
+        
+        output += "\nIn total : " + total + " amino acids.";
+        
         return output;
     }
     

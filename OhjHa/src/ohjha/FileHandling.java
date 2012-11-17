@@ -10,6 +10,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 /**
  * Kaikki tiedostojen käsittelyyn liittyvät metodit.
@@ -34,7 +35,6 @@ public class FileHandling {
          catch (FileNotFoundException e) {
               System.out.println("Filename does not exist");
          }
-        
      return read;
     }
     
@@ -48,23 +48,8 @@ public class FileHandling {
         PrintWriter filer = new PrintWriter(new FileWriter(output));
         filer.print(data);
         filer.close();
-        System.out.println("Saved to " + output);
-        
         } catch (IOException e) {
             System.out.println("Error in copying to file!");
-        }
-    }
-    
-/** Määrittää pitääkö tulostaa vai tallentaa tiedostoon.
-* @param input Muokattu tieto.
-* @param output Jos tyhjä, printtaa. Jos sisältää nimen, ohjaa WriteTo() kirjoitettavaksi.
-*/    
-    public void Printable(String input, String output) {
-
-        if (output == null) {
-            System.out.println(input);
-        } else {
-            WriteTo(output, input);
         }
     }
     
@@ -80,7 +65,7 @@ public class FileHandling {
              while (cleaner.hasNextLine() ) {
                    String line = cleaner.nextLine();
                    if (line.startsWith(">")) {
-                       System.out.println("Removed line starting with >");
+                       continue;
                    } else {
                        cleaned += line; }
              }

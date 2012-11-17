@@ -4,15 +4,22 @@
  */
 package ohjha;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Hashtable;
 import java.util.HashMap;
+import java.util.Scanner;
 
-/**
+/** Tarvittavat libraryt.
  *
  * @author Smoosh
  */
 public class Tables {
     
+    /** DNA-codonien aminohappovastaavuus-taulukko.
+     * 
+     * @return Hashtable jossa key on kodoni, value on aminohappo.
+     */
     public Hashtable DNA() {
         Hashtable aminos = new Hashtable();
         
@@ -84,6 +91,9 @@ public class Tables {
         return aminos;
     }
     
+    /** RNA-kodonitaulukko.
+     *  @ return RNA-kodonitaulukko.
+     */
     public Hashtable RNA() {
         Hashtable rna = new Hashtable();
         
@@ -155,12 +165,49 @@ public class Tables {
         return rna;
     }
     
+    /** Taulukko, jossa on restriktioentsyymileikkauskohtia ja RE:n nimi.
+     * 
+     * @return RE-taulukko.
+     */
     public HashMap RES() {
         HashMap res = new HashMap();
         res.put("CATATG","NdeI");
         
         return res;
     }
+    
+    /** Aminohappolyhenteistä koko nimet.
+     * 
+     * @return Aminohappokokonimi-taulukko.
+     */
+    public HashMap AminoNames() throws FileNotFoundException {
+        HashMap aminoNames = new HashMap();
+        
+             Scanner scanner = new Scanner(new File("aminoNames.txt")); 
+             while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                String[] aminos = line.split("#");
+                aminoNames.put(aminos[0], aminos[1]);
+                }
+              scanner.close();
+              
+        return aminoNames;
+    }
+    
+    public HashMap AminoCount() throws FileNotFoundException {
+        HashMap aminoCount = new HashMap();
+        
+             Scanner scanner = new Scanner(new File("aminoNames.txt")); 
+             while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                String[] aminos = line.split("#");
+                aminoCount.put(aminos[0], 0);
+                }
+              scanner.close();
+              
+        return aminoCount;
+    }
+    
     public static void main(String[] args) {
         
     }

@@ -1,3 +1,5 @@
+package ohjha;
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -52,20 +54,6 @@ public class OhjHaTest {
     @Test
     public void newPrintables() {
         
-    }
-    
-    @Test
-    public void PrintablePrints() {
-        output = null;
-        String input = "Print!";
-        filehandling.Printable(input, output);
-    }
-    
-    @Test
-    public void PrintableSaves() {
-        output = "Test.txt";
-        String input = "In file.";
-        filehandling.Printable(input, output);        
     }
     
     @Test
