@@ -9,11 +9,10 @@ import java.lang.StringIndexOutOfBoundsException;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
-/**Kaikki -do:n liittyvät action metodit.
+/**Kaikki toiminnot, joita kutsutaan kun painetaan nappia.
  *
  * @author Smoosh
  */
-
 public class Toiminto {
     Tables taulut = new Tables();
     FileHandling tiedosto = new FileHandling();
@@ -133,7 +132,8 @@ public class Toiminto {
 *  @param output indeksit
 */   
     public String FindRESite(String input) {
-
+        /** Taulukko sisältää restriktioentsyymit.
+         */
         HashMap<String, String> res = taulut.RES();
         input = input.toUpperCase();
         String output = "Found : \n";
@@ -152,34 +152,38 @@ public class Toiminto {
         return output;
     }
     
-    /** Laskee kaikki aminohapot.
+    /** Laskee kaikki aminohapot sekvenssissä ja antaa niiden koko nimen.
      * 
      * @param input inputFieldistä
      * @return output Stringi jossa kaikki aminohappojen määrät ja niiden koko nimet.
      * @throws FileNotFoundException 
      */
     public String CountProteins(String input) throws FileNotFoundException {
+        /** aminoNames = Koko nimet ja lyhenne, aminoCount = määrä ja lyhenne.
+         */
         HashMap<String, String> aminoNames = taulut.AminoNames();
         HashMap<String, Integer> aminoCount = taulut.AminoCount();
         String output = "";
         int total = 0;
-        
         char[] countables = input.toCharArray();
+        
+        /** Laskee kaikki aminohapot.
+         */
         for(char c: countables) {
-           System.out.println(c);
            if (aminoCount.containsKey(String.valueOf(c))) {
-               int temp = aminoCount.get(String.valueOf(c)) + 1;
-               aminoCount.put(String.valueOf(c), temp);
+               int summa = aminoCount.get(String.valueOf(c)) + 1;
+               aminoCount.put(String.valueOf(c), summa);
            }
         }
-        
+        /** Etsii aminohappojen koko nimet ja niiden yht. summan.
+         */
         for (Entry<String, Integer> entry: aminoCount.entrySet()) {
             if (aminoNames.containsKey(entry.getKey())) {
                 output += aminoNames.get(entry.getKey()) + " (" + entry.getKey() + ") :" + entry.getValue() + "\n";
                 total += entry.getValue();
             }
         }
-        
+       
         output += "\nIn total : " + total + " amino acids.";
         
         return output;

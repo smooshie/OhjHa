@@ -13,7 +13,7 @@ import org.kohsuke.args4j.CmdLineParser;
 import org.kohsuke.args4j.Option;
 import java.util.Scanner;
 
-/** args4j:n komentojen alustaminen.
+/** Main(). Avaa GUI:n.
  * @action muuttuja syntyy, kun komentorivistä luetaan -do. etc... 
  * @author Smoosh
  */
