@@ -5,6 +5,7 @@ package ohjha;
  * and open the template in the editor.
  */
 
+import java.io.FileNotFoundException;
 import ohjha.FileHandling;
 import ohjha.OhjHa;
 import ohjha.Toiminto;
@@ -23,6 +24,8 @@ public class OhjHaTest {
     OhjHa ohjha;
     Toiminto toiminto;
     FileHandling filehandling;
+    GUI gui;
+    
     public String output;
     
     public OhjHaTest() {   
@@ -41,6 +44,7 @@ public class OhjHaTest {
         ohjha = new OhjHa();
         toiminto = new Toiminto();
         filehandling = new FileHandling();
+        gui = new GUI();
     }
     
     @After
@@ -106,9 +110,29 @@ public class OhjHaTest {
      }
      
       @Test
-      public void FindRESite() {
-          
+      public void FindRESite1() {
+         String input = "aaacatatgaaa";
+         output = toiminto.FindRESite(input);
+         assertEquals("Found : \nNdeI at index(s) : 3\n", output);          
       }
      
+      @Test
+      public void FindNoRESite() {
+         String input = "aaaaaa";
+         output = toiminto.FindRESite(input);
+         assertEquals("Found : \nNo RES sites.", output);          
+      }
+      
+      @Test
+      public void CountAAs() throws FileNotFoundException {
+         String input = "KKK";
+         output = toiminto.CountProteins(input);
+         assertEquals("Lysine (K) :3\n\nIn total : 3 amino acids.", output);                   
+      }
+      
+      @Test
+      public void GUIButton() {
+          git 
+      }
      
 }

@@ -142,7 +142,7 @@ public class Toiminto {
             for (Entry<String, String> entry: res.entrySet()) {
                 try {
                     if (input.substring(i, i+entry.getKey().length()).equals(entry.getKey())) {
-                            output += entry.getValue() + " at index(s) : " + i + "\n"; }
+                            output += entry.getValue() + " at index(s) : " +i + "\n"; }
                 } catch (StringIndexOutOfBoundsException e) {
                 }
             }
@@ -179,8 +179,10 @@ public class Toiminto {
          */
         for (Entry<String, Integer> entry: aminoCount.entrySet()) {
             if (aminoNames.containsKey(entry.getKey())) {
-                output += aminoNames.get(entry.getKey()) + " (" + entry.getKey() + ") :" + entry.getValue() + "\n";
-                total += entry.getValue();
+                if (entry.getValue() > 0) {
+                    output += aminoNames.get(entry.getKey()) + " (" + entry.getKey() + ") :" + entry.getValue() + "\n";
+                    total += entry.getValue();
+                }
             }
         }
        
