@@ -55,6 +55,7 @@ public class GUI extends javax.swing.JFrame {
         inputField = new javax.swing.JTextArea();
         jPanel1 = new javax.swing.JPanel();
         countAAButton = new javax.swing.JButton();
+        ProteinMassButton = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         cnButton = new javax.swing.JButton();
         rcButton = new javax.swing.JButton();
@@ -124,21 +125,32 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        ProteinMassButton.setText("Protein Mass");
+        ProteinMassButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ProteinMassButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(countAAButton, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(countAAButton, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
+                    .addComponent(ProteinMassButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(countAAButton)
-                .addContainerGap(142, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ProteinMassButton)
+                .addContainerGap(113, Short.MAX_VALUE))
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(""), "DNA", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Georgia", 1, 10), java.awt.Color.black)); // NOI18N
@@ -419,6 +431,15 @@ public class GUI extends javax.swing.JFrame {
         outputField.setText(output);
     }//GEN-LAST:event_countAAButtonActionPerformed
 
+    private void ProteinMassButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProteinMassButtonActionPerformed
+        try {
+            output = toiminto.ProteinMass(this.inputField.getText());
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        outputField.setText(output);
+    }//GEN-LAST:event_ProteinMassButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -455,6 +476,7 @@ public class GUI extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton DProt;
+    private javax.swing.JButton ProteinMassButton;
     private javax.swing.JButton clearButton;
     private javax.swing.JButton cnButton;
     private javax.swing.JButton codonButton;

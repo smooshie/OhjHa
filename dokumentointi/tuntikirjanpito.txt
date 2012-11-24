@@ -10,3 +10,4 @@
 17.11. GUI:n koodaus, muutama uus metodi. ~4h.
 18.11. JavaDoc-juttuja ~1h.
 19.11. Sekvenssikaaviot ~1h.
+24.11. Lis‰‰ testej‰, pari korjausta, yksi toiminto+n‰pp‰in lis‰‰. ~2h.

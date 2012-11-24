@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="Smoosh-PC" name="ohjha.OhjHaTest" tests="12" time="2.93" timestamp="2012-11-20T12:46:16">
+<testsuite errors="0" failures="0" hostname="Smoosh-PC" name="ohjha.OhjHaTest" tests="1" time="1.193" timestamp="2012-11-24T12:07:22">
   <properties>
     <property name="netbeans.autoupdate.country" value="US" />
     <property name="nb.wait.for.caches" value="true" />
@@ -42,7 +42,7 @@
     <property name="copylibs.rebase" value="true" />
     <property name="manifest.available+main.class" value="true" />
     <property name="libs.swing-layout.maven-pom" value="" />
-    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner ohjha.OhjHaTest filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,C:\Users\Smoosh\OhjHa\OhjHa\build\test\results\TEST-ohjha.OhjHaTest.xml crashfile=C:\Users\Smoosh\OhjHa\OhjHa\build\junitvmwatcher2949549041942577493.properties propsfile=C:\Users\Smoosh\OhjHa\OhjHa\build\junit2124640708578393514.properties" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner ohjha.OhjHaTest filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,C:\Users\Smoosh\OhjHa\OhjHa\build\test\results\TEST-ohjha.OhjHaTest.xml crashfile=C:\Users\Smoosh\OhjHa\OhjHa\build\junitvmwatcher7850822854672671813.properties propsfile=C:\Users\Smoosh\OhjHa\OhjHa\build\junit4382818623718939426.properties" />
     <property name="build.classes.dir" value="build/classes" />
     <property name="netbeans.accept_license_class" value="org.netbeans.license.AcceptLicense" />
     <property name="jnlp.descriptor" value="application" />
@@ -185,6 +185,7 @@
     <property name="meta.inf.dir" value="src/META-INF" />
     <property name="javadoc.encoding.used" value="UTF-8" />
     <property name="dist.jar" value="dist/OhjHa.jar" />
+    <property name="netbeans.automatic.build" value="true" />
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment" />
     <property name="ant.project.name" value="OhjHa" />
     <property name="netbeans.hash.code" value="unique=NB_JAVA0b0e97785-2778-44f0-95ab-d628d882f8f0_60870cb1-f1bb-44c6-b737-d3c1924853bd" />
@@ -299,8 +300,8 @@
     <property name="libs.PostgreSQLDriver.classpath" value="C:\Program Files\NetBeans 7.2\ide\modules\ext\postgresql-9.1-901.jdbc4.jar" />
     <property name="jnlp.signing" value="" />
     <property name="libs.junit.src" value="" />
-    <property name="jnlp.signed" value="false" />
     <property name="annotation.processing.source.output" value="build/generated-sources/ap-source-output" />
+    <property name="jnlp.signed" value="false" />
     <property name="main.class" value="ohjha.OhjHa" />
     <property name="libs.CopyLibs.src" value="" />
     <property name="build.dir" value="build" />
@@ -313,20 +314,8 @@
     <property name="platform.active" value="default_platform" />
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit" />
   </properties>
-  <testcase classname="ohjha.OhjHaTest" name="newPrintables" time="1.605" />
-  <testcase classname="ohjha.OhjHaTest" name="CodonsTriplets" time="0.129" />
-  <testcase classname="ohjha.OhjHaTest" name="ProteinConversion" time="0.118" />
-  <testcase classname="ohjha.OhjHaTest" name="MakeRNA" time="0.116" />
-  <testcase classname="ohjha.OhjHaTest" name="CountAAs" time="0.127" />
-  <testcase classname="ohjha.OhjHaTest" name="FindNoRESite" time="0.105" />
-  <testcase classname="ohjha.OhjHaTest" name="FindRESite1" time="0.105" />
-  <testcase classname="ohjha.OhjHaTest" name="TwoProteins" time="0.113" />
-  <testcase classname="ohjha.OhjHaTest" name="CountNucl" time="0.108" />
-  <testcase classname="ohjha.OhjHaTest" name="hello" time="0.117" />
-  <testcase classname="ohjha.OhjHaTest" name="ReverseComp" time="0.117" />
-  <testcase classname="ohjha.OhjHaTest" name="UnevenCodons" time="0.113" />
-  <system-out><![CDATA[Stop codon found.
-Hello!
+  <testcase classname="ohjha.OhjHaTest" name="hello" time="1.146" />
+  <system-out><![CDATA[Hello!
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

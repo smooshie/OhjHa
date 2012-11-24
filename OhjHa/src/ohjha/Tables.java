@@ -6,8 +6,8 @@ package ohjha;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.Hashtable;
 import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.Scanner;
 
 /** Tarvittavat libraryt.
@@ -194,6 +194,10 @@ public class Tables {
         return aminoNames;
     }
     
+     /** Aminohappojen määrä.
+     * 
+     * @return Aminohappo:määrä-taulukko.
+     */
     public HashMap AminoCount() throws FileNotFoundException {
         HashMap aminoCount = new HashMap();
         
@@ -206,6 +210,25 @@ public class Tables {
               scanner.close();
               
         return aminoCount;
+    }
+    
+    /** HashMap jossa aminohappojen monoisotooppinen massa.
+     * 
+     * @return aminohappo(lyhenne):massa-taulukko.
+     * @throws FileNotFoundException 
+     */
+    public HashMap AminoWeight() throws FileNotFoundException {
+        HashMap<String, Double> aminoWeight = new HashMap();
+        
+             Scanner scanner = new Scanner(new File("aminoWeight.txt")); 
+             while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                String[] aminos = line.split("#");
+                aminoWeight.put(aminos[0], Double.parseDouble(aminos[1]));
+                }
+              scanner.close();
+        return aminoWeight;       
+        
     }
     
     public static void main(String[] args) {

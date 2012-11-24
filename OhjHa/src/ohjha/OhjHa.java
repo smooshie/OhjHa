@@ -8,10 +8,6 @@
  */
 package ohjha;
 
-import org.kohsuke.args4j.CmdLineException;
-import org.kohsuke.args4j.CmdLineParser;
-import org.kohsuke.args4j.Option;
-import java.util.Scanner;
 
 /** Main(). Avaa GUI:n.
  * @action muuttuja syntyy, kun komentorivistä luetaan -do. etc... 

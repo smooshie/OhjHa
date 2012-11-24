@@ -99,12 +99,11 @@ public class Toiminto {
     public String MakeCodons(String input) {
 
             String codons = "";
-            for(int i=0; i<input.length(); i+=3) { {
+            for(int i=0; i<input.length(); i+=3) { 
                if (i+3 < input.length()) {
                     codons += input.substring(i, i+3) + " ";}
                else {
                     codons += input.substring(i, i+(input.length()-i)) + " ";
-               }
                }
             }
         return codons;
@@ -165,6 +164,7 @@ public class Toiminto {
         HashMap<String, Integer> aminoCount = taulut.AminoCount();
         String output = "";
         int total = 0;
+        input = input.toUpperCase();
         char[] countables = input.toCharArray();
         
         /** Laskee kaikki aminohapot.
@@ -189,6 +189,25 @@ public class Toiminto {
         output += "\nIn total : " + total + " amino acids.";
         
         return output;
+    }
+    
+    /** Laskee proteiinisekvenssin monoisotooppisen massan.
+     * @param input inputFieldistä
+     * @return output Stringi, joka sisältää sekvenssin massan.
+     * @throws FileNotFoundException 
+     */
+    public String ProteinMass(String input) throws FileNotFoundException {
+        HashMap<String, Double> aminoWeight = taulut.AminoWeight();
+        double total = 0;
+        input = input.toUpperCase();
+        char[] countables = input.toCharArray();
+        for(char c: countables) {
+             if (aminoWeight.containsKey(String.valueOf(c))) {
+                total += aminoWeight.get(String.valueOf(c));
+             }
+        }
+        
+        return "Monoisotopic mass is: " +total;
     }
     
     public static void main(String[] args) {
