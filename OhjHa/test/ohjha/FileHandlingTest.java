@@ -23,7 +23,7 @@ public class FileHandlingTest {
     
     @Before
     public void setUp() {
-        tiedosto = new FileHandling();
+         tiedosto = new FileHandling();
     }
     
     @After
