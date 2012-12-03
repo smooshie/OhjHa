@@ -11,6 +11,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 /**
  * Kaikki tiedostojen käsittelyyn liittyvät metodit.
@@ -33,7 +35,7 @@ public class FileHandling {
               scanner.close();
          }
          catch (FileNotFoundException e) {
-              System.out.println("Filename does not exist");
+              return("Filename does not exist");
          }
      return read;
     }
@@ -57,26 +59,38 @@ public class FileHandling {
 * @param input tiedostonimi.
 * @param cleaned puhdistettu tiedosto stringinä.
 */    
-    public String Clean(String input) {
-
+    public String[] Clean(String input) {
+        String name = "";
         String cleaned = "";
+        String[] returnable = new String[2];
         try {
              Scanner cleaner = new Scanner(new File(input)); 
              while (cleaner.hasNextLine() ) {
                    String line = cleaner.nextLine();
                    if (line.startsWith(">")) {
+                       name = Name(line);
                        continue;
                    } else {
                        cleaned += line; }
              }
              cleaner.close();
          }
+         
          catch (FileNotFoundException e) {
-              System.out.println("Filename does not exist");
+             returnable[0] = "Filename does not exist";
+             return returnable;
          }
-         return cleaned;
+        
+         returnable[0] = cleaned;
+         returnable[1] = name;
+         
+         return returnable;
     }
     
+    public String Name(String namestring) {
+        return namestring.substring(1);
+    }
+
     public static void main(String[] args) {
         
     }

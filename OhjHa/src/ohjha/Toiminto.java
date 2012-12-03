@@ -9,6 +9,9 @@ import java.lang.StringIndexOutOfBoundsException;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
+import java.applet.*;
+import java.net.*;
+
 /**Kaikki toiminnot, joita kutsutaan kun painetaan nappia.
  *
  * @author Smoosh
@@ -209,7 +212,72 @@ public class Toiminto {
         
         return "Monoisotopic mass is: " +total;
     }
+    /**Etsii löytyykö "findable" muuttujaa inputista.
+     * 
+     * @param input inputFieldistä
+     * @param findable findFieldistä
+     * @return indeksit
+     */
+    public String Find(String input, String findable) {
+        String found = "";
+        if (findable.length() != 0) {
+            for(int i=0; i<input.length(); i++) {
+                if (i+findable.length() < input.length()) {
+                    if (input.substring(i, i+findable.length()).equals(findable)) {
+                        found += "Found " + findable + " at index: " + i + "-" + (i+findable.length()) + "\n";
+                    } 
+                }
+            }
+        }
+        if (found == "") {
+            found += "Did not find occurrence of " + findable;
+        }
+        return found;
+    }
+    /** Vertaa kahden kentän stringejä keskenään.
+     * 
+     * @param input inputFieldistä
+     * @param comparable compareFieldistä
+     * @return Stringi jossa stringien erot.
+     */
+    public String Compare(String input, String comparable) {
+        String compared = "";
+        int total = 0;
+        
+        input = input.toUpperCase();
+        comparable = comparable.toUpperCase();
+        
+        char[] inputs = input.toCharArray();
+        char[] comparables = comparable.toCharArray();
+        
+        for(int i=0; i<input.length(); i++) {
+            if (i < comparable.length()) {
+                if(inputs[i] != comparables[i]) {
+                    compared += inputs[i] + " for " + comparables[i] + " at index " + i + "\n";
+                    total++;
+                }
+            }
+        }
+        
+        if (comparable.length() < input.length()) {
+            compared += "\nComparable is " + (input.length()-comparable.length()) + " characters shorted than input.\n";
+            total = total + input.length()-comparable.length();
+        }
+        
+        if (total == 0) {
+            compared += "No difference.";
+        } else {
+            compared += "\nTotal differences : " + total;
+        }
+        
+        return compared;
+    }
     
+    
+    /**
+     * Tyhjä.
+     * @param args 
+     */
     public static void main(String[] args) {
         
     }

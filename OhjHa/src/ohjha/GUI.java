@@ -21,6 +21,7 @@ import javax.swing.JOptionPane;
 public class GUI extends javax.swing.JFrame {
     Toiminto toiminto = new Toiminto();
     FileHandling filehandling = new FileHandling();
+
     String output = "";
     /**
      * Creates new form GUI
@@ -51,8 +52,6 @@ public class GUI extends javax.swing.JFrame {
         openButton = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         outputField = new javax.swing.JTextArea();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        inputField = new javax.swing.JTextArea();
         jPanel1 = new javax.swing.JPanel();
         countAAButton = new javax.swing.JButton();
         ProteinMassButton = new javax.swing.JButton();
@@ -64,6 +63,14 @@ public class GUI extends javax.swing.JFrame {
         dRNA = new javax.swing.JButton();
         reButton = new javax.swing.JButton();
         useAsInputButton = new javax.swing.JButton();
+        nameLabel = new javax.swing.JLabel();
+        findField = new javax.swing.JTextField();
+        findButton = new javax.swing.JButton();
+        inputField = new javax.swing.JTextField();
+        compareField = new javax.swing.JTextField();
+        compareButton = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         jCheckBoxMenuItem1.setSelected(true);
         jCheckBoxMenuItem1.setText("jCheckBoxMenuItem1");
@@ -111,10 +118,6 @@ public class GUI extends javax.swing.JFrame {
         outputField.setColumns(20);
         outputField.setRows(5);
         jScrollPane3.setViewportView(outputField);
-
-        inputField.setColumns(20);
-        inputField.setRows(5);
-        jScrollPane1.setViewportView(inputField);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Proteins", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Georgia", 1, 10))); // NOI18N
 
@@ -209,7 +212,7 @@ public class GUI extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(24, Short.MAX_VALUE)
+                .addContainerGap(13, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(reButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(dRNA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -245,28 +248,72 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        nameLabel.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
+
+        findButton.setText("Find");
+        findButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                findButtonActionPerformed(evt);
+            }
+        });
+
+        compareButton.setText("Compare");
+        compareButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                compareButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Smoosh\\OhjHa\\OhjHa\\dna.png")); // NOI18N
+
+        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Smoosh\\OhjHa\\OhjHa\\dna.png")); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(outputLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(inputLabel)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(openButton)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(clearButton)
-                            .addGap(86, 86, 86)
-                            .addComponent(useAsInputButton)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(saveButton))
-                        .addComponent(jScrollPane1)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE)))
-                .addGap(18, 18, 18)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(inputLabel)
+                        .addGap(18, 18, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel1))
+                            .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(outputLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(clearButton)
+                                            .addGap(86, 86, 86)
+                                            .addComponent(useAsInputButton)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(saveButton))
+                                        .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(findField, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(findButton)
+                                        .addGap(15, 15, 15)
+                                        .addComponent(compareField, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(compareButton))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(inputField, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(openButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(22, 22, 22))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(nameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)))))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -280,35 +327,54 @@ public class GUI extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(inputLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(openButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(outputLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(saveButton)
                             .addComponent(clearButton)
                             .addComponent(exitButton)
                             .addComponent(useAsInputButton))
-                        .addContainerGap())
+                        .addGap(11, 11, 11))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(46, 46, 46)
-                                .addComponent(jLabel1))
-                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(inputLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(29, 29, 29)
+                                                .addComponent(jLabel1))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(nameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(11, 11, 11)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(openButton)
+                                                    .addComponent(inputField, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(18, 18, 18)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                    .addComponent(findField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(findButton)
+                                                    .addComponent(compareField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(compareButton))))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(outputLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(5, 5, 5)
+                                        .addComponent(jLabel3)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel2)))))
+                        .addContainerGap(39, Short.MAX_VALUE))))
         );
 
         pack();
@@ -352,6 +418,9 @@ public class GUI extends javax.swing.JFrame {
     private void clearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearButtonActionPerformed
         inputField.setText("");
         outputField.setText("");
+        compareField.setText("");
+        findField.setText("");
+        nameLabel.setText("");
     }//GEN-LAST:event_clearButtonActionPerformed
     
      /** Kutsuu Reverse Compliment metodia Toiminnosta.
@@ -389,8 +458,11 @@ public class GUI extends javax.swing.JFrame {
         try {
         File tiedosto = chooser.getSelectedFile();
         String filename = tiedosto.getAbsolutePath();
-        String input = filehandling.Clean(filename);
-        inputField.setText(input);
+        String[] input = filehandling.Clean(filename);
+        inputField.setText(input[0]);
+        if (input[1] != "") {
+            nameLabel.setText(input[1]);
+        }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "File not found.", "File Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -416,12 +488,18 @@ public class GUI extends javax.swing.JFrame {
            JOptionPane.showMessageDialog(this, "Error in saving to file.", "File Error", JOptionPane.ERROR_MESSAGE);
    }
     }//GEN-LAST:event_saveButtonActionPerformed
-
+    /**
+     * Siirtää output-fieldin tiedot input-fieldiin.
+     * @param evt 
+     */
     private void useAsInputButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_useAsInputButtonActionPerformed
         output = outputField.getText();
         inputField.setText(output);
     }//GEN-LAST:event_useAsInputButtonActionPerformed
-
+    /**
+     * Laskee aminohapot inpufieldistä, näyttää tuloksen outputfieldissä.
+     * @param evt 
+     */
     private void countAAButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_countAAButtonActionPerformed
         try {
             output = toiminto.CountProteins(this.inputField.getText());
@@ -430,7 +508,11 @@ public class GUI extends javax.swing.JFrame {
         }
         outputField.setText(output);
     }//GEN-LAST:event_countAAButtonActionPerformed
-
+    
+    /**
+     * Laskee proteiinimassan.
+     * @param evt 
+     */
     private void ProteinMassButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProteinMassButtonActionPerformed
         try {
             output = toiminto.ProteinMass(this.inputField.getText());
@@ -439,6 +521,27 @@ public class GUI extends javax.swing.JFrame {
         }
         outputField.setText(output);
     }//GEN-LAST:event_ProteinMassButtonActionPerformed
+    /**
+     * Etsii find fieldissä olevan stringin inputfieldistä.
+     * @param evt 
+     */
+    private void findButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findButtonActionPerformed
+        if (this.findField.getText().length() > 0) {
+        output = toiminto.Find(this.inputField.getText(), this.findField.getText());
+        outputField.setText(output);
+        }
+    }//GEN-LAST:event_findButtonActionPerformed
+/**
+ * Vertaa inputfieldiä ja compareFieldiä keskenään.
+ * @param evt 
+ */
+    private void compareButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_compareButtonActionPerformed
+        if (this.compareField.getText().length() > 0) {
+            output = toiminto.Compare(this.inputField.getText(), this.compareField.getText());
+            outputField.setText(output);
+        }
+        
+    }//GEN-LAST:event_compareButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -480,20 +583,26 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton clearButton;
     private javax.swing.JButton cnButton;
     private javax.swing.JButton codonButton;
+    private javax.swing.JButton compareButton;
+    private javax.swing.JTextField compareField;
     private javax.swing.JButton countAAButton;
     private javax.swing.JButton dRNA;
     private javax.swing.JButton exitButton;
-    private javax.swing.JTextArea inputField;
+    private javax.swing.JButton findButton;
+    private javax.swing.JTextField findField;
+    private javax.swing.JTextField inputField;
     private javax.swing.JLabel inputLabel;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JColorChooser jColorChooser1;
     private javax.swing.JFileChooser jFileChooser1;
     private javax.swing.JFileChooser jFileChooser2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JLabel nameLabel;
     private javax.swing.JButton openButton;
     private javax.swing.JTextArea outputField;
     private javax.swing.JLabel outputLabel;

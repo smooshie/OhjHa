@@ -54,6 +54,11 @@ public class ToimintoTest {
     
      @Test
      public void ProteinConversion() {
+         assertEquals("KKK", toiminto.ProteinConversion("AAAAAAAAA"));
+     }
+    
+     @Test
+     public void ProteinConversionLowercase() {
          assertEquals("KKK", toiminto.ProteinConversion("aaaaaaaaa"));
      }
      
@@ -79,6 +84,11 @@ public class ToimintoTest {
      
       @Test
       public void FindRESite1() {
+         assertEquals("Found : \nNdeI at index(s) : 3\n", toiminto.FindRESite("AAACATATGAAA"));          
+      }
+      
+      @Test
+      public void FindRESite1LowerCase() {
          assertEquals("Found : \nNdeI at index(s) : 3\n", toiminto.FindRESite("aaacatatgaaa"));          
       }
      
@@ -106,7 +116,7 @@ public class ToimintoTest {
       public void ProteinMassOne() throws FileNotFoundException {
           assertEquals("Monoisotopic mass is: 71.03711", toiminto.ProteinMass("A"));
       }
- 
+      
       @Test
       public void ProteinMassOneLowercase() throws FileNotFoundException {
           assertEquals("Monoisotopic mass is: 71.03711", toiminto.ProteinMass("a"));
@@ -115,6 +125,36 @@ public class ToimintoTest {
       @Test
       public void ProteinMassNotAProtein() throws FileNotFoundException {
           assertEquals("Monoisotopic mass is: 0.0", toiminto.ProteinMass("X"));
-      }      
+      }
+      
+      @Test
+      public void FindOnce() {
+          assertEquals("Found AB at index: 0-2\n", toiminto.Find("ABCD", "AB"));
+      }
+      
+      @Test
+      public void FindNone() {
+          assertEquals("Did not find occurrence of CC", toiminto.Find("ABCD", "CC"));
+      }
+      
+      @Test
+      public void FindTwo() {
+          assertEquals("Found CC at index: 0-2\nFound CC at index: 1-3\n", toiminto.Find("CCCC", "CC"));
+      }
+      
+      @Test
+      public void Compare() {
+          assertEquals("C for A at index 3\n\nTotal differences : 1", toiminto.Compare("CCCC", "CCCA"));
+      }
+      
+      @Test
+      public void CompareShorter() {
+          assertEquals("C for A at index 2\n\nComparable is 1 characters shorted than input.\n\nTotal differences : 2", toiminto.Compare("CCCC", "CCA"));
+      }
+      
+      @Test
+      public void CompareSame() {
+          assertEquals("No difference.", toiminto.Compare("AAAA", "AAAA"));
+      }
       
 }

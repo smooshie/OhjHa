@@ -26,7 +26,6 @@ public class OhjHaTest {
     public OhjHaTest() {   
     }
     
-    
     @Before
     public void setUp() {
         ohjha = new OhjHa();

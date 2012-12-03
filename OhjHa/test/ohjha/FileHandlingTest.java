@@ -31,13 +31,45 @@ public class FileHandlingTest {
     }
     
     @Test
+    public void FileDoesNotExistsReadFrom() {
+        assertEquals("Filename does not exist", tiedosto.ReadFrom("tuut.txt"));
+    }
+    
+    @Test
+    public void FileDoesNotExistClean() {
+        String[] cleaned = tiedosto.Clean("tuut.txt");
+        assertEquals("Filename does not exist", cleaned[0]);
+        assertNull(cleaned[1]);
+    }
+    
+    @Test
+    public void NameRemovesFirstCharacter() {
+        assertEquals("emoved", tiedosto.Name("Removed"));
+    }
+    
+    @Test
     public void ReadFrom() {
         assertEquals(">AAAACCCGGTAAAA", tiedosto.ReadFrom("testi.txt"));
     }
     
     @Test
-    public void Clean() {
-        assertEquals("AAAA", tiedosto.Clean("testi.txt"));
+    public void CleanFetchesSequence() {
+        String[] cleaned = tiedosto.Clean("testi.txt");
+        assertEquals("AAAA", cleaned[0]);
+    }
+
+    
+    @Test
+    public void CleanFetchesName() {
+       String[] cleaned = tiedosto.Clean("testi.txt");
+       assertEquals("AAAACCCGGT", cleaned[1]);
+    }
+    
+    @Test
+    public void CleanNoName() {
+       String[] cleaned = tiedosto.Clean("noname.txt");
+       assertEquals("AAAA", cleaned[0]);
+       assertEquals("", cleaned[1]);
     }
   
 }
