@@ -212,7 +212,7 @@ public class GUI extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(13, Short.MAX_VALUE)
+                .addContainerGap(19, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(reButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(dRNA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -370,9 +370,8 @@ public class GUI extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(5, 5, 5)
                                         .addComponent(jLabel3)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGap(11, 11, 11)
                                         .addComponent(jLabel2)))))
                         .addContainerGap(39, Short.MAX_VALUE))))
         );
@@ -385,8 +384,10 @@ public class GUI extends javax.swing.JFrame {
      * @param output Metodin output. 
      */
     private void DProtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DProtActionPerformed
-        output = toiminto.ProteinConversion(this.inputField.getText());
-        outputField.setText(output);
+        if (this.inputField.getText().length() > 0) {       
+            output = toiminto.ProteinConversion(this.inputField.getText());
+            outputField.setText(output);
+        }
     }//GEN-LAST:event_DProtActionPerformed
     
     /** Kutsuu Find RESite metodia Toiminnosta.
@@ -394,8 +395,10 @@ public class GUI extends javax.swing.JFrame {
      * @param output Metodin output. 
      */
     private void reButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reButtonActionPerformed
-        output = toiminto.FindRESite(this.inputField.getText());
-        outputField.setText(output);
+        if (this.inputField.getText().length() > 0) {        
+            output = toiminto.FindRESite(this.inputField.getText());
+            outputField.setText(output);
+        }
     }//GEN-LAST:event_reButtonActionPerformed
     
     /** Kutsuu Count Nucleotide metodia Toiminnosta.
@@ -403,8 +406,10 @@ public class GUI extends javax.swing.JFrame {
      * @param output Metodin output. 
      */
     private void cnButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cnButtonActionPerformed
-        output = toiminto.CountNucleotides(this.inputField.getText());
-        outputField.setText(output);
+        if (this.inputField.getText().length() > 0) {
+            output = toiminto.CountNucleotides(this.inputField.getText());
+            outputField.setText(output);
+        }
     }//GEN-LAST:event_cnButtonActionPerformed
     
     /** Sulkee ohjelman.
@@ -428,24 +433,30 @@ public class GUI extends javax.swing.JFrame {
      * @param output Metodin output. 
      */
     private void rcButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rcButtonActionPerformed
-        output = toiminto.ReverseCompliment(this.inputField.getText());
-        outputField.setText(output);
+        if (this.inputField.getText().length() > 0) {
+            output = toiminto.ReverseCompliment(this.inputField.getText());
+            outputField.setText(output);
+        }
     }//GEN-LAST:event_rcButtonActionPerformed
      /** Kutsuu Make Codons metodia Toiminnosta.
      * @param this.inputField.getText() inputkentän tiedot
      * @param output Metodin output. 
      */
     private void codonButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_codonButtonActionPerformed
-        output = toiminto.MakeCodons(this.inputField.getText());
-        outputField.setText(output);
+        if (this.inputField.getText().length() > 0) {
+            output = toiminto.MakeCodons(this.inputField.getText());
+            outputField.setText(output);
+        }
     }//GEN-LAST:event_codonButtonActionPerformed
     /** Kutsuu MakeRNA metodia Toiminnosta.
      * @param this.inputField.getText() inputkentän tiedot
      * @param output Metodin output. 
      */
     private void dRNAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dRNAActionPerformed
-        output = toiminto.MakeRNA(this.inputField.getText());
-        outputField.setText(output);
+        if (this.inputField.getText().length() > 0) {
+            output = toiminto.MakeRNA(this.inputField.getText());
+            outputField.setText(output);
+        }
     }//GEN-LAST:event_dRNAActionPerformed
      /** Avaa tiedostonhaku-ikkunan ja hakee tiedoston inputFieldiin.
      */
@@ -493,20 +504,25 @@ public class GUI extends javax.swing.JFrame {
      * @param evt 
      */
     private void useAsInputButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_useAsInputButtonActionPerformed
-        output = outputField.getText();
-        inputField.setText(output);
+        if (this.inputField.getText().length() > 0) {
+            output = outputField.getText();
+            inputField.setText(output);
+        }
     }//GEN-LAST:event_useAsInputButtonActionPerformed
     /**
      * Laskee aminohapot inpufieldistä, näyttää tuloksen outputfieldissä.
      * @param evt 
      */
     private void countAAButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_countAAButtonActionPerformed
-        try {
-            output = toiminto.CountProteins(this.inputField.getText());
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        outputField.setText(output);
+       
+        if (this.inputField.getText().length() > 0) {
+            try {
+                output = toiminto.CountProteins(this.inputField.getText());
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            outputField.setText(output);
+       }
     }//GEN-LAST:event_countAAButtonActionPerformed
     
     /**
@@ -514,12 +530,14 @@ public class GUI extends javax.swing.JFrame {
      * @param evt 
      */
     private void ProteinMassButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProteinMassButtonActionPerformed
-        try {
-            output = toiminto.ProteinMass(this.inputField.getText());
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+        if (this.inputField.getText().length() > 0) {
+            try {
+                output = toiminto.ProteinMass(this.inputField.getText());
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            outputField.setText(output);
         }
-        outputField.setText(output);
     }//GEN-LAST:event_ProteinMassButtonActionPerformed
     /**
      * Etsii find fieldissä olevan stringin inputfieldistä.

@@ -9,8 +9,6 @@ import java.lang.StringIndexOutOfBoundsException;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
-import java.applet.*;
-import java.net.*;
 
 /**Kaikki toiminnot, joita kutsutaan kun painetaan nappia.
  *
@@ -220,15 +218,15 @@ public class Toiminto {
      */
     public String Find(String input, String findable) {
         String found = "";
-        if (findable.length() != 0) {
-            for(int i=0; i<input.length(); i++) {
+
+        for(int i=0; i<input.length(); i++) {
                 if (i+findable.length() < input.length()) {
                     if (input.substring(i, i+findable.length()).equals(findable)) {
                         found += "Found " + findable + " at index: " + i + "-" + (i+findable.length()) + "\n";
                     } 
                 }
-            }
-        }
+         }
+        
         if (found == "") {
             found += "Did not find occurrence of " + findable;
         }
@@ -251,13 +249,12 @@ public class Toiminto {
         char[] comparables = comparable.toCharArray();
         
         for(int i=0; i<input.length(); i++) {
-            if (i < comparable.length()) {
                 if(inputs[i] != comparables[i]) {
                     compared += inputs[i] + " for " + comparables[i] + " at index " + i + "\n";
                     total++;
                 }
-            }
-        }
+         }
+        
         
         if (comparable.length() < input.length()) {
             compared += "\nComparable is " + (input.length()-comparable.length()) + " characters shorted than input.\n";
