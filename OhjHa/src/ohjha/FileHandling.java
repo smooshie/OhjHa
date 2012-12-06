@@ -55,7 +55,7 @@ public class FileHandling {
         }
     }
     
-/** Puhdistaa esim fasta-tiedostosta rivit, jotka eivät ole biologista seknvenssiä.
+/** Puhdistaa txt-tiedostosta rivit, jotka eivät ole biologista seknvenssiä. Tämä rivi sisältää sekvenssin nimen ja muita tietoja. Se lähetetään palautettavaksi Nimi() metodille.
 * @param input tiedostonimi.
 * @param cleaned puhdistettu tiedosto stringinä.
 */    
@@ -87,6 +87,11 @@ public class FileHandling {
          return returnable;
     }
     
+    /** Poistaa nimirivistä ensimmäisen kirjaimen ja palauttaa.
+     * 
+     * @param namestring
+     * @return 
+     */
     public String Name(String namestring) {
         return namestring.substring(1);
     }

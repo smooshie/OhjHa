@@ -11,3 +11,6 @@
 18.11. JavaDoc-juttuja ~1h.
 19.11. Sekvenssikaaviot ~1h.
 24.11. Lis‰‰ testej‰, pari korjausta, yksi toiminto+n‰pp‰in lis‰‰. ~2h.
+3.12. Perusjuttuja 1hx
+4.12. Testej‰ 2h
+5.12. Hiomista. 1j
