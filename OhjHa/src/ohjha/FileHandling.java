@@ -95,7 +95,11 @@ public class FileHandling {
     public String Name(String namestring) {
         return namestring.substring(1);
     }
-
+    
+    /**
+     * Tyhjä.
+     * @param args 
+     */
     public static void main(String[] args) {
         
     }

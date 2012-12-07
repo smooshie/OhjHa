@@ -544,9 +544,15 @@ public class GUI extends javax.swing.JFrame {
      * @param evt 
      */
     private void findButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findButtonActionPerformed
+        
         if (this.findField.getText().length() > 0) {
-        output = toiminto.Find(this.inputField.getText(), this.findField.getText());
-        outputField.setText(output);
+            if (this.findField.getText().equals("darwin")) {
+                Darwin darwin = new Darwin();
+                darwin.setVisible(true);
+            } else {
+                output = toiminto.Find(this.inputField.getText(), this.findField.getText());
+                outputField.setText(output);
+            }
         }
     }//GEN-LAST:event_findButtonActionPerformed
 /**
